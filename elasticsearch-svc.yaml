@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: elasticsearch
+  namespace: logging
+  labels:
+    app: elasticsearch
+spec:
+  selector:
+    app: elasticsearch
+  type: NodePort
+  ports:
+    - port: 9200
+      targetPort: 9200
+      nodePort: 30010
+      name: rest
+    - port: 9300
+      name: inter-node
